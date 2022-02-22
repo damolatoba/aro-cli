@@ -1,0 +1,1 @@
+﻿oc create secret docker-registry --docker-server=voyacontainerregistry1.azurecr.io --docker-username=voyacontainerregistry1 --docker-password=okhuCTvmPj+yWKz1HxbTGEyoW8vTBjMt --docker-email=unused acr-secret

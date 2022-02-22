@@ -1,0 +1,27 @@
+apiVersion: config.openshift.io/v1
+kind: OAuth
+metadata:
+  name: cluster
+spec:
+  identityProviders:
+  - name: AAD
+    mappingMethod: claim
+    type: OpenID
+    openID:
+      clientID: {   "acceptMappedClaims": null,   "addIns": [],   "allowGuestsSignIn": null,   "allowPassthroughUsers": null,   "appId": "2a3111a1-2706-47ae-80dc-04ceae953aad",   "appLogoUrl": null,   "appPermissions": null,   "appRoles": [],   "applicationTemplateId": null,   "availableToOtherTenants": false,   "deletionTimestamp": null,   "displayName": "aro-auth",   "errorUrl": null,   "groupMembershipClaims": null,   "homepage": null,   "identifierUris": [],   "informationalUrls": {     "marketing": null,     "privacy": null,     "support": null,     "termsOfService": null   },   "isDeviceOnlyAuthSupported": null,   "keyCredentials": [],   "knownClientApplications": [],   "logo@odata.mediaEditLink": "directoryObjects/c968750c-d303-4fce-8fe2-1eeb0904083b/Microsoft.DirectoryServices.Application/logo",   "logoUrl": null,   "logoutUrl": null,   "mainLogo@odata.mediaEditLink": "directoryObjects/c968750c-d303-4fce-8fe2-1eeb0904083b/Microsoft.DirectoryServices.Application/mainLogo",   "oauth2AllowIdTokenImplicitFlow": false,   "oauth2AllowImplicitFlow": true,   "oauth2AllowUrlPathMatching": false,   "oauth2Permissions": [     {       "adminConsentDescription": "Allow the application to access aro-auth on behalf of the signed-in user.",       "adminConsentDisplayName": "Access aro-auth",       "id": "253e94c6-a0bf-496d-8ca6-ea8a1afd84ca",       "isEnabled": true,       "type": "User",       "userConsentDescription": "Allow the application to access aro-auth on your behalf.",       "userConsentDisplayName": "Access aro-auth",       "value": "user_impersonation"     }   ],   "oauth2RequirePostResponse": false,   "objectId": "c968750c-d303-4fce-8fe2-1eeb0904083b",   "objectType": "Application",   "odata.metadata": "https://graph.windows.net/84cc859e-d165-4b0e-8b05-b47b775371e7/$metadata#directoryObjects/@Element",   "odata.type": "Microsoft.DirectoryServices.Application",   "optionalClaims": {     "accessToken": [],     "idToken": [       {         "additionalProperties": [],         "essential": false,         "name": "upn",         "source": null       },       {         "additionalProperties": [],         "essential": false,         "name": "email",         "source": null       }     ],     "saml2Token": [],     "samlToken": null   },   "orgRestrictions": [],   "parentalControlSettings": {     "countriesBlockedForMinors": [],     "legalAgeGroupRule": "Allow"   },   "passwordCredentials": [     {       "additionalProperties": null,       "customKeyIdentifier": null,       "endDate": "2023-01-04T11:29:53.236794+00:00",       "keyId": "62db4968-11c4-4bf2-ae8b-13fd8d4709fd",       "startDate": "2022-01-05T11:29:53.236794+00:00",       "value": null     }   ],   "preAuthorizedApplications": null,   "publicClient": null,   "publisherDomain": "damolatoba001.onmicrosoft.com",   "recordConsentConditions": null,   "replyUrls": [     "https://oauth-openshift.apps.q7bybsvs.EastUS.aroapp.io/oauth2callback/AAD"   ],   "requiredResourceAccess": [     {       "additionalProperties": null,       "resourceAccess": [         {           "additionalProperties": null,           "id": "311a71cc-e848-46a1-bdf8-97ff7156d8e6",           "type": "Scope"         }       ],       "resourceAppId": "00000002-0000-0000-c000-000000000000"     }   ],   "samlMetadataUrl": null,   "signInAudience": "AzureADMyOrg",   "tokenEncryptionKeyId": null,   "wwwHomepage": null }
+      clientSecret:
+        name: openid-client-secret-azuread
+      extraScopes:
+      - email
+      - profile
+      extraAuthorizeParameters:
+        include_granted_scopes: "true"
+      claims:
+        preferredUsername:
+        - email
+        - upn
+        name:
+        - name
+        email:
+        - email
+issuer: https://login.microsoftonline.com/84cc859e-d165-4b0e-8b05-b47b775371e7

@@ -1,0 +1,1 @@
+﻿az ad app list --query [].'appId' -o tsv | ForEach-Object {az ad app delete --id $_}
