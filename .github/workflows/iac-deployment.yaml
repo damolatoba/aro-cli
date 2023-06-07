@@ -4,7 +4,8 @@ on:
     inputs:
 
 jobs:
-  terraform_tests:
+  deploy_to_test:
+    environment: test
     runs-on: ubuntu-latest
 
     steps:
