@@ -21,22 +21,22 @@ jobs:
         run: |
           pip install checkov
 
-      # - name: Set up GCP credentials
-      #   uses: google-github-actions/setup-gcloud@v0.3.0
-      #   with:
-      #     version: 'latest'
-      #     service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-      #     project_id: <your_gcp_project_id> # Replace with your GCP project ID
+      - name: Set up GCP credentials
+        uses: google-github-actions/setup-gcloud@v0.3.0
+        with:
+          version: 'latest'
+          service_account_key: ${{ secrets.TF_SERVICE_ACCOUNT }}
+          project_id: ninth-victor-389223 
 
-      # - name: Authorize GCP service principal
-      #   run: |
-      #     gcloud auth activate-service-account --key-file=${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
-      #     gcloud config set project <your_gcp_project_id> # Replace with your GCP project ID
+      - name: Authorize GCP service principal
+        run: |
+          gcloud auth activate-service-account --key-file=${{ secrets.TF_SERVICE_ACCOUNT }}
+          gcloud config set project ninth-victor-389223
 
-      # - name: Validate Terraform syntax
-      #   run: |
-      #     terraform init
-      #     terraform validate
+      - name: Validate Terraform syntax
+        run: |
+          terraform init
+          terraform validate
         
 
       - name: Run Terraform static analysis
