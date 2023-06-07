@@ -1,0 +1,48 @@
+name: Terraform CI/CD
+on:
+  workflow_dispatch:
+    inputs:
+
+jobs:
+  terraform_tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.6
+
+      - name: Install dependencies
+        run: |
+          pip install checkov
+
+      # - name: Set up GCP credentials
+      #   uses: google-github-actions/setup-gcloud@v0.3.0
+      #   with:
+      #     version: 'latest'
+      #     service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+      #     project_id: <your_gcp_project_id> # Replace with your GCP project ID
+
+      # - name: Authorize GCP service principal
+      #   run: |
+      #     gcloud auth activate-service-account --key-file=${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+      #     gcloud config set project <your_gcp_project_id> # Replace with your GCP project ID
+
+      # - name: Validate Terraform syntax
+      #   run: |
+      #     terraform init
+      #     terraform validate
+        
+
+      - name: Run Terraform static analysis
+        run: |
+          checkov -d .
+
+      # - name: Deploy infrastructure for integration testing
+      #   run: |
+      #     terraform init
+      #     terraform apply -auto-approve
