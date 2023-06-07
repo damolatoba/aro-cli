@@ -41,6 +41,8 @@ jobs:
 
       - name: Run Terraform static analysis
         run: |
+          pwd
+          ls -a
           checkov -d ./
 
       # - name: Deploy infrastructure for integration testing
