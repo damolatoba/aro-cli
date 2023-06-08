@@ -60,7 +60,7 @@ jobs:
           # terraform show -json ${{ steps.plan.outputs.plan_path }}  > tf.json
           ls -a
           # checkov -d ./
-          checkov -f ${{ steps.plan.outputs.plan_path }}
+          checkov -f main.tf
 
 
       # - name: Deploy infrastructure for integration testing
