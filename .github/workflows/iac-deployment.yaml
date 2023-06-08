@@ -59,6 +59,7 @@ jobs:
         run: |
           echo ${{ steps.plan.outputs.plan_path }}
           terraform show -json ${{ steps.plan.outputs.plan_path }}  > tf.json
+          ls -a
           checkov -f tf.json
 
 
