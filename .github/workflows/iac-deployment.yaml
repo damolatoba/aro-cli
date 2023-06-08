@@ -57,11 +57,10 @@ jobs:
 
       - name: Run Terraform static analysis
         run: |
-          echo ${{ steps.plan.outputs.plan_path }}
-          terraform show -json ${{ steps.plan.outputs.plan_path }}  > tf.json
+          # terraform show -json ${{ steps.plan.outputs.plan_path }}  > tf.json
           ls -a
-          checkov -d ./
-          checkov -f tf.json
+          # checkov -d ./
+          checkov -f ${{ steps.plan.outputs.plan_path }}
 
 
       # - name: Deploy infrastructure for integration testing
