@@ -22,7 +22,7 @@ jobs:
           pip install checkov
 
       - name: Set up GCP credentials
-        uses: google-github-actions/auth-setup@v0.4.0
+        uses: google-github-actions/auth@v0.4.0
         with:
           service_account_key: ${{ secrets.TF_SERVICE_ACCOUNT }}
 
