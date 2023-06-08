@@ -60,7 +60,7 @@ jobs:
           # terraform show -json ${{ steps.plan.outputs.plan_path }}  > tf.json
           ls -a
           # checkov -d ./
-          checkov -f ${GITHUB_WORKSPACE}/${{ steps.plan.outputs.plan_path }} --framework terraform_plan
+          checkov -f ${GITHUB_WORKSPACE}/${{ steps.plan.outputs.plan_path }}
 
 
       # - name: Deploy infrastructure for integration testing
