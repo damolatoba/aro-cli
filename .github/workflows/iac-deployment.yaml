@@ -62,7 +62,7 @@ jobs:
           checkov -d ${{ steps.plan.outputs.plan_path }}
 
 
-      - name: Deploy infrastructure for integration testing
-        run: |
-          # terraform init
-          terraform apply -auto-approve
+      # - name: Deploy infrastructure for integration testing
+      #   run: |
+      #     # terraform init
+      #     terraform apply -auto-approve
