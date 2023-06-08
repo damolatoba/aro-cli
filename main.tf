@@ -14,17 +14,17 @@ terraform {
 }
 
 provider "google" {
-  credentials = {
-    json_key = var.google_credentials
-  }
+  # credentials = {
+  #   json_key = var.google_credentials
+  # }
   project     = "ninth-victor-389223"
   region      = "us-central1"
 }
 
 provider "google-beta" {
-  credentials = {
-    json_key = var.google_credentials
-  }
+  # credentials = {
+  #   json_key = var.google_credentials
+  # }
   project     = "ninth-victor-389223"
   region      = "us-central1"
 }
