@@ -46,10 +46,10 @@ provider "google-beta" {
 #   special = false
 # }
 
-resource "google_project" "main" {
-  name       = "My Project"
-  project_id = "ninth-victor-389223"
-}
+# resource "google_project" "main" {
+#   name       = "My Project"
+#   project_id = "ninth-victor-389223"
+# }
 
 resource "google_storage_bucket" "static-site" {
   name          = "image-store.com"
