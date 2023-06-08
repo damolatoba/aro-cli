@@ -47,15 +47,22 @@ jobs:
         run: |
           terraform init
           terraform validate
-        
+
+      - name: Create Terraform plan
+        id: plan
+        run: |
+          terraform init
+          terraform plan -out=tfplan
+          echo "::set-output name=plan_path::$(pwd)/tfplan"
 
       - name: Run Terraform static analysis
         run: |
           pwd
           ls -a
-          checkov -d ./
+          checkov -d ${{ steps.plan.outputs.plan_path }}
 
-      # - name: Deploy infrastructure for integration testing
-      #   run: |
-      #     terraform init
-      #     terraform apply -auto-approve
+
+      - name: Deploy infrastructure for integration testing
+        run: |
+          # terraform init
+          terraform apply -auto-approve
