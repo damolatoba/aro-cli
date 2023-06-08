@@ -69,3 +69,7 @@ resource "google_storage_bucket" "static-site" {
     max_age_seconds = 3600
   }
 }
+
+resource "google_compute_network" "vpc_network" {
+  name = "vpc-network"
+}
