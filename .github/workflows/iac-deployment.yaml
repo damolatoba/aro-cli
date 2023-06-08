@@ -57,8 +57,7 @@ jobs:
 
       - name: Run Terraform static analysis
         run: |
-          pwd
-          ls -a
+          cat ${{ steps.plan.outputs.plan_path }}
           checkov -d ${{ steps.plan.outputs.plan_path }}
 
 
