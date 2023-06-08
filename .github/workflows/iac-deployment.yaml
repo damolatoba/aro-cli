@@ -22,16 +22,26 @@ jobs:
           pip install checkov
 
       - name: Set up GCP credentials
-        uses: google-github-actions/setup-gcloud@v0.3.0
+        uses: google-github-actions/auth-setup@v0.4.0
         with:
-          version: 'latest'
           service_account_key: ${{ secrets.TF_SERVICE_ACCOUNT }}
-          project_id: ninth-victor-389223 
 
       - name: Authorize GCP service principal
         run: |
-          gcloud auth activate-service-account --key-file=${{ secrets.TF_SERVICE_ACCOUNT }}
-          gcloud config set project ninth-victor-389223
+          gcloud auth configure-docker gcr.io
+          gcloud config set project ninth-victor-389223 # Replace with your GCP project ID
+
+      # - name: Set up GCP credentials
+      #   uses: google-github-actions/setup-gcloud@v0.3.0
+      #   with:
+      #     version: 'latest'
+      #     service_account_key: ${{ secrets.TF_SERVICE_ACCOUNT }}
+      #     project_id: ninth-victor-389223 
+
+      # - name: Authorize GCP service principal
+      #   run: |
+      #     gcloud auth activate-service-account --key-file=${{ secrets.TF_SERVICE_ACCOUNT }}
+      #     gcloud config set project ninth-victor-389223
 
       - name: Validate Terraform syntax
         run: |
