@@ -28,14 +28,20 @@ jobs:
           cat versions.tf
 
       - name: Set up GCP credentials
+        id: 'auth'
         uses: 'google-github-actions/auth@v1'
         with:
           credentials_json: '${{ secrets.TF_SERVICE_ACCOUNT }}'
 
-      - name: Authorize GCP service principal
+      - name: Select environment workspace
         run: |
-          gcloud auth configure-docker gcr.io
-          gcloud config set project ninth-victor-389223 # Replace with your GCP project ID
+          echo ${{ steps.auth.outputs.credentials_file_path }}
+          source ./tf-workspace-apply.sh staging ${{ steps.auth.outputs.credentials_file_path }}
+
+      # - name: Authorize GCP service principal
+      #   run: |
+      #     gcloud auth configure-docker gcr.io
+      #     gcloud config set project ninth-victor-389223 # Replace with your GCP project ID
 
       # - name: Set up GCP credentials
       #   uses: google-github-actions/setup-gcloud@v0.3.0
