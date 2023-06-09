@@ -23,7 +23,7 @@ jobs:
 
       - name: Select environment workspace
         run: |
-          source ./tf-workspace-apply.sh test
+          source ./tf-workspace-apply.sh staging
           cat versions.tf
 
       - name: Set up GCP credentials
