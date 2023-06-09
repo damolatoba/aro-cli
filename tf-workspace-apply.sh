@@ -1,10 +1,10 @@
 #!/bin/bash
 
-the_env=$1,
-gcp_auth_file_path=$2,
-prod="terraform/state/prod",
-staging="terraform/state/staging",
-test="terraform/state/test",
+the_env=$1
+gcp_auth_file_path=$2
+prod="terraform/state/prod"
+staging="terraform/state/staging"
+test="terraform/state/test"
 
 escaped_prod=${prod//\//\\/}
 escaped_staging=${staging//\//\\/}
