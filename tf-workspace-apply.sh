@@ -1,7 +1,7 @@
 #!/bin/bash
 
 the_env=$1
-gcp_auth_file_path=$2
+# gcp_auth_file_path=$2
 prod="terraform/state/prod"
 staging="terraform/state/staging"
 test="terraform/state/test"
@@ -12,7 +12,8 @@ escaped_test=${test//\//\\/}
 
 # function to check required inputs and initiate the other functions
 initiate_and_check_inputs() {
-    if [ -z "$the_env" ] && [ -z "$gcp_auth_file_path" ]; then
+    # if [ -z "$the_env" ] && [ -z "$gcp_auth_file_path" ]; then
+    if [ -z "$the_env" ]; then
         echo "Error: Please supply both the environment and the gcp_auth_file path when running this script."
     else
         delete_dot_tf_dir
