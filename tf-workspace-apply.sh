@@ -61,10 +61,10 @@ update_backend_in_versions_file() {
 }
 
 # funtion to run terraform init, plan and apply
-tf_init_and_apply() {
-    terraform init
-    terraform apply -var-file=./environments/$the_env.auto.tfvars -var gcp_auth_file=$gcp_auth_file_path
-}
+# tf_init_and_apply() {
+#     terraform init
+#     terraform apply -var-file=./environments/$the_env.auto.tfvars -var gcp_auth_file=$gcp_auth_file_path
+# }
 
 # initiate/run script
 initiate_and_check_inputs
