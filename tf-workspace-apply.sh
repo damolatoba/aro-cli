@@ -41,22 +41,22 @@ delete_dot_tf_dir() {
 update_backend_in_versions_file() {
     if [[ $the_env == "staging" ]]
     then
-        sed -i "" "s/$escaped_test/$escaped_staging/" ./versions.tf
-        sed -i "" "s/$escaped_prod/$escaped_staging/" ./versions.tf
+        sed -i "s/$escaped_test/$escaped_staging/" ./versions.tf
+        sed -i "s/$escaped_prod/$escaped_staging/" ./versions.tf
         cat versions.tf
     fi
 
     if [[ $the_env == "test" ]]
     then
-        sed -i "" "s/$escaped_staging/$escaped_test/" ./versions.tf
-        sed -i "" "s/$escaped_prod/$escaped_test/" ./versions.tf
+        sed -i "s/$escaped_staging/$escaped_test/" ./versions.tf
+        sed -i "s/$escaped_prod/$escaped_test/" ./versions.tf
         cat versions.tf
     fi
 
     if [[ $the_env == "prod" ]]
     then
-        sed -i "" "s/$escaped_test/$escaped_prod/" ./versions.tf
-        sed -i "" "s/$escaped_staging/$escaped_prod/" ./versions.tf
+        sed -i "s/$escaped_test/$escaped_prod/" ./versions.tf
+        sed -i "s/$escaped_staging/$escaped_prod/" ./versions.tf
         cat versions.tf
     fi
 }
