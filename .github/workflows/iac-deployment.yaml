@@ -21,6 +21,10 @@ jobs:
         run: |
           pip install checkov
 
+      - name: Select environment workspace
+        run: |
+          source tf-workspace-apply.sh test
+
       - name: Set up GCP credentials
         uses: 'google-github-actions/auth@v1'
         with:
