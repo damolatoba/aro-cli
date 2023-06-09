@@ -23,7 +23,7 @@ jobs:
 
       - name: Select environment workspace
         run: |
-          source tf-workspace-apply.sh test
+          source ./tf-workspace-apply.sh test
 
       - name: Set up GCP credentials
         uses: 'google-github-actions/auth@v1'
