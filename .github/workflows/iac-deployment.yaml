@@ -23,6 +23,7 @@ jobs:
 
       - name: Select environment workspace
         run: |
+          cat versions.tf
           source ./tf-workspace-apply.sh staging
           cat versions.tf
 
